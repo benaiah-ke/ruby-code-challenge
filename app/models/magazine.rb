@@ -16,10 +16,13 @@ class Magazine
   end
 
   def contributors
+    # Filter all articles,
+    # get those where the magazine matches self
     Article.all.filter do |magazine|
       magazine.magazine == self
-    end.collect do |magz|
-      magz.author
+    end.collect do |magazines|
+      # Then get the authors
+      magazines.author
     end
   end
 
@@ -30,19 +33,24 @@ class Magazine
   end
 
   def article_titles
+    # Find all articles in the magazine
     Article.all.filter do |magazine|
       magazine.magazine == self
     end.collect do |article|
+      # And get he title
       article.title
     end
   end
 
   def contributing_authors
+    # Find all articles in the magazine
     Article.all.select do |magazine|
       magazine.magazine == self
     end.collect do |author|
+      # Get the author
       author.author
     end.uniq.collect do |article|
+      # with more than 2 articles
       article.articles.count > 2
     end
   end

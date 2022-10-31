@@ -5,7 +5,7 @@ class Article
     
     @@all = []
 
-    def initialize(title, author, magazine)
+    def initialize(author, magazine, title)
         @author = author
         @magazine = magazine
         @title = title

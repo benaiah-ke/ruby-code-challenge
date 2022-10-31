@@ -10,12 +10,16 @@ class Author
   end
 
   def articles
+    # Filter all artices,
+    # return those matching the author
     Article.all.filter do |article|
       article.author == self
     end
   end
 
   def magazines
+    # Check all articles
+    # and get unique magazines
     articles.collect do |article|
       article.magazine.uniq
     end
@@ -26,8 +30,10 @@ class Author
   end
 
   def topic_areas
-    magazines.collect do |mags|
-      mags.category.uniq
+    # Check all magazines
+    # and get unique categories
+    magazines.collect do |magazines|
+      magazines.category.uniq
     end
   end
 
